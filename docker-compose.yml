@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+    app:
+        build: .
+        container_name: vuttr_backend
+        command: yarn start
+        restart: always
+        ports:
+            - "3000:3000"
+        volumes:
+            - .:/usr/src/app
+        networks:
+            - vuttr-network
+
+    database:
+        image: mongo
+        container_name: vuttr_db
+        ports:
+            - "27017:27017"
+        networks:
+            - vuttr-network
+
+networks:
+    vuttr-network:
+        driver: bridge

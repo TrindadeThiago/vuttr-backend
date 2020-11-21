@@ -6,7 +6,7 @@ const routes = Router();
 
 routes.get("/tools", ToolController.index);
 routes.post("/tools", ToolController.store);
-routes.put("/tools/:_id", ToolController.update);
-routes.delete("/tools/:_id", ToolController.delete);
+routes.put("/tools/:id", ToolController.update);
+routes.delete("/tools/:id", ToolController.delete);
 
 export default routes;

@@ -24,9 +24,9 @@ class ToolConstroller {
     }
 
     async update(request: Request, response: Response) {
-        const { _id } = request.params;
+        const { id } = request.params;
 
-        const tool = await Tool.findByIdAndUpdate(_id, request.body);
+        const tool = await Tool.findByIdAndUpdate(id, request.body);
 
         if (!tool) {
             return response
@@ -38,9 +38,9 @@ class ToolConstroller {
     }
 
     async delete(request: Request, response: Response) {
-        const { _id } = request.params;
+        const { id } = request.params;
 
-        const tool = await Tool.findByIdAndDelete(_id);
+        const tool = await Tool.findByIdAndDelete(id);
 
         if (!tool) {
             return response
