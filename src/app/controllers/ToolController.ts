@@ -4,7 +4,17 @@ import Tool from "../models/Tools";
 
 class ToolConstroller {
     async index(request: Request, response: Response) {
-        const tools = await Tool.find();
+        const { tag } = request.query;
+
+        let params = {};
+
+        if (tag) {
+            params = {
+                tags: { $regex: tag, $options: "i" },
+            };
+        }
+
+        const tools = await Tool.find(params).select("-__v -createdAt");
 
         return response.status(200).json(tools);
     }
